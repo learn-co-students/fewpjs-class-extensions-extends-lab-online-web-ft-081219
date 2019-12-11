@@ -15,22 +15,20 @@ class Polygon {
 class Triangle extends Polygon {
   sumOfSidesGreater(array) {
     const testArr = [...array];
-    let returnVal = true;
     for (let i=0; i<testArr.length; i++) {
       if (testArr[0] + testArr[1] <= testArr[2]) {
-        returnVal = false;
+        return false;
       }
       testArr.push(testArr.shift());
     }
-    return returnVal;
+    return true;
   }
 
   get isValid() {
-    let returnVal = false;
     if (this._sides.length === 3 && this.sumOfSidesGreater(this._sides)) {
-      returnVal = true;
+      return true;
     }
-    return returnVal;
+    return false;
   }
 }
 
